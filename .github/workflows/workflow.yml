@@ -35,7 +35,7 @@ jobs: # 워크플로우 정의
               await github.rest.pulls.update({
                 owner: context.repo.owner, // 저장소 소유자
                 repo: context.repo.repo, // 저장소 이름
-                issue_number: pull_request.number, // PR 번호
+                pull_number: pull_request.number, // PR 번호
                 state: "closed", // 상태를 닫힘으로 변경 
               });
             }
