@@ -2,7 +2,7 @@ name: pull request check # 워크플로우 이름
 
 on: # 워크플로우 실행 트리거
   pull_request: # pull_request 가 실행될 때
-    types: [opend, synchronize] # PR이 생성되거나 업데이트 될때
+    types: [opened, synchronize] # PR이 생성되거나 업데이트 될때
   
 jobs: # 워크플로우 정의
   check: # 깃허브 액션 실행 환경
