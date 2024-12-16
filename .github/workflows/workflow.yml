@@ -21,8 +21,9 @@ jobs: # 워크플로우 정의
             }
 
             const body = pull_request.body;
-
-            if(!body) {
+            const message = "<!--해당 주석은 반드시 지워주세요.-->";
+            
+            if(!body || body.includes(message)) {
               // PR에 본문이 없을 경우 코멘트 추가
               await github.rest.issues.createComment({
                 owner: context.repo.owner, // 저장소 소유자
@@ -30,7 +31,7 @@ jobs: # 워크플로우 정의
                 issue_number: pull_request.number, // PR 번호
                 body: "해당 PR은 가이드라인을 준수하지 않았기 때문에 PR을 닫도록 하겠습니다. \n 가이드라인을 준수해서 다시 PR을 해주세요 🙏", // 코멘트 내용 
               });
-
+            
               // PR 닫기
               await github.rest.pulls.update({
                 owner: context.repo.owner, // 저장소 소유자
